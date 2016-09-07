@@ -1,0 +1,47 @@
+#include <fstream>
+#include <string>
+#include "lebnum.hh"
+
+#include "model.hh"
+
+using namespace std;
+using namespace lebnum;
+int main() {
+
+  typedef ChemicalReactionRobertson<double> OdeType;
+  OdeType reaction;
+  const int dim = 3;
+  Vector<double> u0(dim);
+  u0 = 1.,0.,0.;
+
+  double t0 = 0.,
+    tend = 0.3,
+    hestim = 1.25e-03;
+
+  const int choose = 1;   //1 = impl. Euler, 2 = expl4stiff, 3 = both
+
+  if(choose == 1 || choose == 3){
+    double stpsztol = 1.e-05;
+    ImplicitEuler<OdeType> IE(reaction,1.e-06,stpsztol);
+    string fname = "ImplicitEulerRobertson.dat";
+    IE.integrate(t0,tend,u0,hestim,5,fname);
+    int sys = system(("./versus.sh "+fname+" "+ num2str(dim)+"  Robertson").c_str());
+    cout << "Status: "<< sys << endl;
+  }
+ 
+  if(choose == 2 || choose == 3){
+    double hmin = 1.e-06;
+    int maxit = 20;
+    Explicit4Stiff<OdeType> E4S(reaction,1.e-04,1.e-04,0.65,0.95,hmin);
+    string fname2 = "E4StiffRobertson.dat";
+    E4S.integrate(t0,tend,u0,1.e-05,maxit,fname2);
+    int sys = system(("./versus.sh "+fname2+" "+ num2str(dim)+"  Robertson-reaction system solved with explicit method").c_str());
+    cout << "Status: "<< sys << endl;
+  }
+  
+  
+  
+  
+
+ return 0;
+}

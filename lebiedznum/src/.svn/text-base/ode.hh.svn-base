@@ -1,0 +1,40 @@
+#ifndef NUMERICAL_METHODS_FOR_SOLVING_ODES_HH
+#define NUMERICAL_METHODS_FOR_SOLVING_ODES_HH
+
+namespace lebnum{
+
+/**
+ * @file Autonomous representation of ODEs because every time-dependent ODE can
+ * be converted to an autonomous one by introducing a new state representing time.
+*/
+
+  template<class MODEL>
+  class ClassicalRK{
+  public:
+    typedef typename MODEL::value_type value_type;
+    typedef typename MODEL::size_type size_type;
+    typedef typename MODEL::VType VType;
+
+    ClassicalRK(MODEL& ode):ode_(ode){}
+
+    template<class TSTEP, class V>
+    VType& step(const TSTEP& deltaT, const V& x){
+      k1_ = deltaT*ode_(x);
+      k2_ = deltaT*ode_(x+0.5*k1_);
+      k3_ = deltaT*ode_(x+0.5*k2_);
+      k4_ = deltaT*ode_(x + k3_);
+
+      next_ = x + 1./6.*(k1_ + 2.*k2_ + 2.*k3_ + k4_);
+      return next_;
+    }
+    
+
+  private:
+    MODEL& ode_;  //reference
+    VType next_, k1_,k2_, k3_,k4_;
+  };
+
+
+}//end namespace
+
+#endif

@@ -1,0 +1,64 @@
+% Uebungsaufgaben zur Vorlesung MoSi 3
+% Blatt 1
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+
+\setcounter{blatt}{11}
+
+\begin{document}
+\input{../opening_sol.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{loes}
+ \begin{enumerate}[a)]
+\item \begin{itemize} \item Fixpunktbestimmung: \begin{align*} \dot{\begin{bmatrix} x \\ y\end{bmatrix}} &= \begin{bmatrix} -y + \mu x +xy^2 \\ x + \mu y - x^2\end{bmatrix}\stackrel{!}{=} \begin{bmatrix} 0 \\ 0\end{bmatrix} \Rightarrow (x^*,y^*) = (0,0) \quad \mathrm{unabh. von}\ \mu \end{align*}
+\item Wir fragen uns jetzt, welche Szenarien bzgl. variierendem Parameter $\mu$ auftreten k\"onnen und wie dies wieder mit der Stabilit\"at einhergeht. Dazu bestimmen wir wieder die Eigenwerte der Jacobi Matrix des Systems, ausgewertet am Fixpunkt \begin{align*} \begin{bmatrix} \mu + y^2 & -1 + 2xy \\ 1-2x & \mu \end{bmatrix}_{(x^*,y^*)} = \begin{bmatrix} \mu & -1 \\ 1 & \mu\end{bmatrix} =: A, \end{align*} welche mittels der Nullstellenermittlung f\"ur das charakteristischen Polynom $\det(\lambda I - A)\stackrel{!}{=} 0$ gefunden werden können: \begin{align*} \det \begin{bmatrix} \lambda-\mu & 1 \\ -1 & \lambda-\mu\end{bmatrix} = \lambda^2 - 2\mu\lambda + \mu^2 + 1 = 0 \Rightarrow \lambda_{1,2} \equiv \lambda_{1,2}(\mu) = \mu \pm i.\end{align*} Wenn der Fixpunkt stabil sein soll, dann muss $\Re(\lambda_i) < 0, \quad i = 1,2$ gelten. Damit er instabil wird muss ein (oder beide) EW in die rechte komplexe Halbebene $H_+:=\{z \in \CC : \Re(z) > 0\}$ wandern, indem wir $\mu$ solange ver\"andern bis dieses Ziel erreicht ist. Wir betrachten nun die M\"oglichkeit,dass beide komplex-konjugierten EWe nach $H_+$ wandern. Wir errinnern uns an Blatt 6: Es ist $\det(A) = \mu^2 + 1 > 0 \ \forall \mu \in \RR,$ damit haben wir also eine Spirale und Zentrum und deren Stabilit\"at h\"angt von der Spur der Matrix $A$ ab, d. h. $\trace(A) = 2\mu$. Es gilt \begin{align*} \trace(A) \begin{cases} <0 & \text{stabile Spirale/Knoten} \\ = 0 & \text{neutral}\\ > 0 & \text{Instabile Spirale/Knoten}\end{cases}. \end{align*} Konkret hei\ss t dies also, dass f\"ur $\mu<0$  Stabilit\"at vorliegt und f\"ur $\mu>0$ Instabilit\"at, weshalb wir mal annehmen, dass eine Hopf-Bifurkation bei $\mu = 0$ auftritt. 
+\end{itemize}
+\item Ein bisschen \texttt{C++}-Programmierung oder Programmierfrevelei mit Matlab, und los geht's \ldots
+\item Stabilit\"at berechnen wir \"uber die Ableitungsformel aus dem Hinweis. Wir wissen ja schon, dass $\mu = 0$ ist, womit sich das System schreiben l\"asst als \begin{align*} \dot{x} &= -y  + xy^2\\
+  \dot{y} &= x - x^2.\end{align*} Damit ist (vgl. den Hinweis) $\omega = 1$ und $f(x,y) = xy^2$ und $g(x,y) = -x^2.$ Wir berechnen jetzt alle ben\"otigten partiellen Ableitungen, also $f_{xxx} = 0, f_{xyy} = 2, g_{xxy} = 0, g_{yyy} = 0, f_{xy} = 2y, f_{xx} = 0, f_{yy} = 2x, g_{xy} = 0, g_{xx} = -2, g_{yy} = 0$ und wir erhalten \begin{equation*} a = \frac{1}{16}(2 + 4xy) \stackrel{(x^*,y^*)}{\Rightarrow} a = \frac{1}{8} > 0, \end{equation*} d.h. wir haben eine \emph{subkritische} Hopf-Bifurkation (das sind die schlimmen).
+\end{enumerate}
+\end{loes}
+
+\begin{loes}
+Wir untersuchen den Brusselator.
+\begin{enumerate}[a)] 
+\item Fixpunkte lassen sich mittels der Hauptisoklinen (eng. \emph{nullclines}) bestimmen, d.h. wir l\"osen die Ratengleichungen simultan nach $y$ auf:\begin{alignat*}{2} \dot{x} &= 1 - (b+1)x + ax^2y &\quad &= 0 \iff y = \frac{(b+1)x-1}{ax^2}\\
+\dot{y} &= bx - ax^2y &\quad &= 0 \iff y = \frac{bx}{ax^2}.\end{alignat*} Nun ermitteln wir Schnittpunkte durch Gleichsetzen (\emph{Jeder Schnittpunkt stellt einen Fixpunkt dar}): \begin{align*} \frac{(b+1)x-1}{ax^2} &= \frac{bx}{ax^2} \Rightarrow x^* = 1.\end{align*} Dies setzten wir \zB in  $bx -ax^2y = 0$ ein und erhalten $y^* = \tfrac{b}{a}$. \\Der einzige Fixpunkt ist demnach gegeben durch $(x^*,y^*) = (1, b/a).$
+\item Wir plotten die Hauptisoklinen in der $x-y-$Ebene und schauen, wie sich $(\dot{x},\dot{y})$ in Abh\"angigkeit der Punkte \"uber, zwischen, rechts, unter und links der Hauptisoklinen verhalten. Pfeile werden  wie folgt eingezeichnet:
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+$\dot{x}$ & $\dot{y}$ & Pfeil \\ \hline \hline
+$> 0$ & $< 0$ & $\searrow$ \\
+$<0$ & $< 0$ & $\swarrow$ \\
+$<0$ & $> 0$ & $\nwarrow$ \\
+$>0$ & $> 0$ & $\nearrow$ \\\hline
+\end{tabular}
+\end{center}
+Horizontale Pfeile sind einzuzeichnen f\"ur $\dot{y} = 0$ und vertikale f\"ur $\dot{x} = 0.$\\
+Die Trapping-Region wird nun durch eine geschlossene gerichtete Kurve, welche den Fixpunkt umschlie\ss t, charakterisiert (vgl. Abb. \ref{fig:trapping}).
+\begin {figure}[!h] %[htbp]
+\begin{center}
+\input{trappingreg.tex} %when using epslatex with gnuplot, make sure both the .tex
+\caption[Trapping-Region]{Charakterisierung der Trapping-Region}
+\label{fig:trapping}    % and .eps file are present
+\end{center} 
+ \end {figure}
+\item Die Jacobi-Matrix am Fixpunkt lautet\begin{align*} \begin{bmatrix} -(b+1) + 2ayx & ax^2 \\ b-2ayx & -ax^2 \end{bmatrix}_{(x^*,y^*)} = \begin{bmatrix} b-1 & a \\ -b &  -a\end{bmatrix} =: A. \end{align*}
+Damit ist $\trace(A) = b-(1+a)$ und $\det(A) = a > 0,$ weil $a > 0$ angenommen wurde. Da die Determinante gr\"o\ss er 0 ist, ist der Fixpunkt schon mal kein Sattel. Ist $\trace(A) < 0 \iff b < 1+a$ liegt Stabilit\"at  und f\"ur $b = 1+a$ ein lin. Zentrum vor. Falls $\trace(A) > 0$ ist, so ist er ein \emph{repeller}, d.h. ein instabiler Punkt oder eine instabile Spirale. Der kritische Wert ist also \begin{align}\label{exi} \trace(A) = b-(1+a) > 0 \iff b > 1+a =: b_{\mathrm{crit}}.\end{align}
+\item Gilt nun \eqref{exi}, dann folgt mit dem Satz von Poincar\'e-Bendixson, dass es einen geschlossenen Orbit irgendwo in der Trapping-Region gibt, d.h. ein Grenzzyklus existiert f\"ur $b > b_{\mathrm{crit}}.$
+\item Die Frequenz wird berechnet durch den Imagin\"arteil der EWe an der Bifurkation. Die EWe errechnet man mittels $\lambda^2 - \trace(A)\lambda + \det(A) = 0$ und weil f\"ur $b = b_{\mathrm{crit}}$, d.h. an der Bifurkation $\trace(A) = 0$ und $\det(A) > 0$ gelten, folgt, dass $\lambda_{1,2} =\pm i\sqrt{\det(A)} = \pm i \sqrt{a}. $ Damit ist die Periode gegeben durch \begin{equation*} \phi \approx \frac{2\pi}{\sqrt{a}}. \end{equation*}
+\end{enumerate}
+\end{loes}
+
+\bigskip
+\hrule
+\begin{flushright}
+\end{flushright}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

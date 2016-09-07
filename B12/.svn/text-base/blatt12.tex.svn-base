@@ -1,0 +1,68 @@
+% Uebungsaufgaben zur Vorlesung MoSi 3
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+
+\setcounter{blatt}{12}
+
+
+\begin{document}
+\input{../opening.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{aufg}[Iterative Abbildungen]
+Betrachten Sie die iterative Abbildung
+\begin{equation*}
+ x_{n+1} =
+  \begin{cases}
+   4x_n^2, & 0 \leqslant x_n \leqslant \tfrac{1}{2} \\
+   2-2x_n, & \tfrac{1}{2} < x_n \leqslant 1
+  \end{cases}
+\end{equation*}
+mit $x_0 \in [0,1]$.
+\begin{enumerate}[(a)]
+ \item Stellen Sie die Abbildung graphisch dar.
+ \item Bestimmen Sie die Fixpunkte.
+ \item Bestimmen Sie die Stabilit\"at der Fixpunkte.
+ \item Bestimmen Sie die Trajektorie der Abbildung für die Startwerte $x_0=0.2$
+       und $x_0=0.7$, indem Sie mindestens 20 Punkte berechnen, z.\,B. mit
+       \texttt{MATLAB}.
+\end{enumerate}
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[Poincar\'e-Abbildung]
+Betrachten Sie die Differentialgleichung in Polarkoordinaten
+\begin{align*}
+ \dot{r} &= r(1-r^2) \\
+ \dot{ \theta} &= 1
+\end{align*}
+mit $r, \theta \geqslant 0$. Benutzen Sie eine Poincar\'e-Abbildung, um zu zeigen, dass
+dieses System einen eindeutigen Grenzzyklus hat. Klassifizieren Sie dessen
+Stabilit\"at.
+
+\medskip
+Kurze Anleitung:
+\begin{itemize}
+ \item L\"osen Sie das DGL-System analytisch.
+ \item Wählen Sie die positive x-Achse als Schnittfl\"ache $S$, auf der Sie die Periode beobachten.
+ \item Stellen Sie die Formel f\"ur die Poincar\'e-Abbildung $P$ auf.
+ \item Plotten Sie $P$, um den Fixpunkt $r^*$ zu erraten, und \"uberpr\"ufen Sie ihn.
+ \item Berechnen Sie $P'(r^*)$.
+\end{itemize}
+
+
+\end{aufg}
+
+
+\bigskip
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

@@ -1,0 +1,60 @@
+% Uebungsaufgaben zur Vorlesung MoSi 3
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+
+\setcounter{blatt}{11}
+
+
+\begin{document}
+\input{../opening.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{aufg}[Hopf Bifurkationen: \"Uberg\"ange von Gleichgewichten zu Grenzzyklen]
+Betrachte das System
+\begin{equation} \label{hopfeasy} 
+\begin{aligned}
+  \dot{x} &= -y + \mu x + xy^2\\
+  \dot{y} &= x + \mu y - x^2
+\end{aligned}
+\end{equation}
+\begin{enumerate}[a)]
+\item Zeige, dass eine Hopf-Bifurkation am Fixpunkt $(x^*,y^*) = (0,0)$ mit sich \"anderndem $\mu$ auftritt. F\"ur welches $\mu$ tritt diese ein?
+\item Visualisiere die Hopf-Bifurkation numerisch mit den Verfahren aus Blatt 6. 
+\item Bestimme die Eigenschaft der Hopf-Bifurkation analytisch: Ist diese super- oder subkritisch? 
+
+\smallskip
+\footnotesize{
+\textbf{Hinweis: } Schreibe \eqref{hopfeasy} zuerst in der Form \begin{align*} \dot{x} &= -\omega y + f(x,y) \\ \dot{y} &= \omega x + g(x,y), \end{align*} wobei $f$ and $g$ nichtlineare Terme enthalten. Bestimme hierauf \begin{align*} a &= \frac{1}{16}\left(f_{xxx} + f_{xyy} + g_{xxy} + g_{yyy} + \frac{1}{\omega}\{f_{xy}(f_{xx}+f_{yy}) - g_{xy}(g_{xx}+g_{yy}) - f_{xx}g_{xx} + f_{yy}g_{yy}\}\right),\end{align*} wobei die partiellen Ableitungen an $(x^*,y^*)$ ausgewertet werden. Dann gilt f\"ur die Hopf-Bifurkation:\begin{align*}  a &< 0 \quad \text{superkritisch (stabiler Grenzzyklus)} \\ a &> 0 \quad \text{subkritisch (instabiler Grenzzyklus)}.\end{align*} }
+\end{enumerate}
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[Oszillierende chemische Reaktionen]
+Ein einfaches dimensionsloses chemisches System stellt der \textbf{Brusselator} dar:
+\begin{align*}
+\dot{x} &= 1 - (b+1)x + ax^2y \\
+\dot{y} &= bx - ax^2y,
+\end{align*}
+mit $a,b > 0$ und \glqq Konzentrationen\grqq, $x,y \geq 0.$
+\begin{enumerate}[a)]
+\item Bestimme alle Fixpunkte und klassifiziere sie.
+\item Visualisere die Hauptisoklinen und finde die \emph{trapping}-Region des Flusses.
+\item Zeige, dass eine Hopf-Bifurkation auftritt und bestimme den kritischen Wert $b = b_{\mathrm{crit}}.$
+\item Argumentiere mit dem \emph{Satz von Poincar\'e-Bendixson}, ob es Grenzzyklen f\"ur $b < b_{\mathrm{crit}}$ oder $b > b_{\mathrm{crit}}$ gibt.
+\item Was ist die ungef\"ahre Periode des Grenzzyklus f\"ur $b \approx b_{\mathrm{crit}}?$
+\item Erstelle numerisch Phasenportraits f\"ur sich \"andernde Parameter (halte beispielsweise $a$ konstant und variiere $b$). Zeichne auch die Hauptisoklinen aus b) ein.
+\end{enumerate}
+\end{aufg}
+
+\medskip
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

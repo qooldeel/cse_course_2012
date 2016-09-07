@@ -1,0 +1,56 @@
+This is LEBNUM -- a very flat and tiny collection of C++ code snippets
+used in conjunction with the course "MoSi" held at the University of Ulm.
+Efforts have been made to keep the whole thing simple: no external software
+is used. 
+
+Feel free to use, improve, extend and contribute  whenever you feel to do so!!
+
+You're heartly invited.
+
+Addendum:
+---------
+
+If you are only interested in using the stuff, then the .hh files in the 'src'
+directory mighty not interest you. 
+In that case:
+
+  1.) Go directly to the 'test' directory and set up your problem, say, 
+      'myprob.cc'(*)
+      
+  2.) Alter the Makefile by simply replacing
+      
+      FILENAME = myprob 
+      
+      Then save it
+ 
+  3.) On command line, execute
+       
+       make clean; make; ./myprob
+
+
+That's it (let's suppose you don't get some error messages). 
+Have fun, folks!
+
+
+
+===============================================================================
+Footnotes:
+----------
+
+(*) a typical 'myprob.cc' example may look as follows:
+
+
+
+#include "lebnum.hh"      //include LEBNUM sources
+
+using namespace std;      //no need to write std::
+using namespace lebnum;   //no need to write lebnum::
+
+int main(){
+
+    cout << "When you read this, your example has been successfully compiled" <<
+    endl;
+
+} 
+
+

@@ -1,0 +1,103 @@
+% Uebungsaufgaben zur Vorlesung MoSi 3
+% Blatt 1
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+
+\setcounter{blatt}{4 }
+
+\begin{document}
+\input{../opening.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{aufg}[Sattel-Knoten-Bifurkation]\label{aufg:sn-bif}
+ Untersuchen Sie die folgenden Differentialgleichungen für verschiedene $r$:
+ \begin{enumerate}[(i)]
+  \item $\dot{y} = r-y(1-y)$
+  \item $\dot{x} = 1 + rx + x^2$
+  \item $\dot{z} = r + z - \ln(1+z)$
+  \item $\dot{w} = r^2 + w^2$.
+ \end{enumerate}
+ Zeigen Sie, dass eine Sattel-Knoten-Bifurkation bei einem bestimmten Wert von
+ $r$ auftritt, und zeichnen Sie ein Bifurkationsdiagramm.
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\vfill\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[Transkritische Bifurkation]
+ Untersuchen Sie die folgenden Differentialgleichungen wie in
+ Aufgabe~\ref{aufg:sn-bif} mit dem Unterschied, dass hier eine transkritische
+ Bifurkation auftritt:
+ \begin{enumerate}[(i)]
+  \item $\dot{x} = rx + x^2$
+  \item $\dot{y} = y - ry(1-y)$.
+ \end{enumerate}
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\vfill\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[Chemische Kinetik]
+ Wir betrachten ein chemisches Reaktionssystem ähnlich dem in Aufgabe~1.1:
+ \begin{align*}
+  \textrm{A} + \textrm{X} &\stackrel{k_{\pm 1}}{\rightleftharpoons} 2\, \textrm{X} \\
+  \textrm{X} + \textrm{B} &\stackrel{k_{2}}{\rightarrow} C.
+ \end{align*}
+ Wir nehmen an, dass $\textrm{A}$ und $\textrm{B}$ in so großer Konzentration
+ vorliegen, dass diese als konstant angesehen werden können.
+ \begin{enumerate}[A)]
+  \item Leiten Sie mit dem Massenwirkungsgesetz eine Differentialgleichung der
+        Form $\dot{x} = c_1 x + c_2 x^2$ für die Konzentration $x$ von
+        $\textrm{X}$ her.
+  \item Zeigen Sie, dass $x^*=0$ für $k_2 b > k_1 a$ stabil ist (wobei $a$ und $b$
+        jeweils die Konzentrationen von $\textrm{A}$ und $\textrm{B}$ sind), und
+        erklären Sie, warum dieser Sachverhalt chemisch sinnvoll ist.
+  \item Lösen Sie die Differentialgleichung für verschiedene
+        Anfangskonzentrationen und Ratenkoeffizienten mit Ihrem Integrator,
+        insbesondere im Bereich $k_2 b\approx k_1 a$.
+ \end{enumerate}
+\end{aufg}
+
+
+%------------------------------------------------------------------------------%
+\bigskip\vfill\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[Laserschwelle]
+ Ein Modell für einen Laser ist durch das folgende System gewöhnlicher
+ Differentialgleichungen gegeben (nach Milonni und Eberly)
+ \begin{align*}
+  \dot{n} &= GnN - kn \\
+  \dot{N} &= -GnN - fN + p.
+ \end{align*}
+ Hier ist $n$ die Zahl der Photonen im Laser-Feld, $N$ ist die Anzahl der
+ angeregten Photonen. Parameter $G>0$ modelliert die Zunahme für die stimulierte
+ Emission, $k$ die Abnahme. Weiter beschreibt $f$ die Abnahme durch spontane
+ Emission, $p$ ist die Stärke der optischen Pumpe.
+ \begin{enumerate}[A)]
+  \item Wir nehmen an, dass die Änderung von $N$ viel schneller relaxiert als
+        die Änderung von $n$. Mit der
+        \emph{Quasi Steady-State Approximation} (QSSA) nehmen wir an, dass
+        $\dot{N} \approx 0$. Leiten sie damit eine eindimensionale
+        Differentialgleichung für $n$ her.
+  \item Zeigen Sie, dass $n^*=0$ instabil wird für $p>p_c$ mit der
+        Laserschwelle $p_c$.
+  \item Welchen Typ hat die Bifurkation bei $p_c$?
+ \end{enumerate}
+
+ 
+\end{aufg}
+
+
+\bigskip
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

@@ -1,0 +1,63 @@
+% Uebungsaufgaben zur Vorlesung MoSi 3
+% Blatt 1
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+
+\setcounter{blatt}{1}
+
+\begin{document}
+\input{../opening.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{aufg}[Autokatalyse]
+ Betrachten Sie die chemische Modellgleichung
+ \begin{equation*}
+  \textrm{A} + \textrm{X} \rightleftharpoons 2\, \textrm{X}.
+ \end{equation*}
+ Wir nehmen an, dass $\textrm{A}$ in großer Konzentration $a=c_{\textrm{A}}$
+ vorliegt, so dass diese als konstant angesehen werden kann.
+ Nach dem Massenwirkungsgesetz ergibt sich für die Änderung der Konzentration
+ $x=c_{\textrm{X}}$ von $\textrm{X}$ die Gleichung
+ \begin{equation}\label{eq:ode1}
+  \dot{x} = k_1 a x - k_{-1} x^2
+ \end{equation}
+ mit den positiven Ratenkoeffizienten $k_1$ und $k_{-1}$.
+ \medskip
+ 
+ Finden Sie alle Fixpunkte von Gleichung (\ref{eq:ode1}) und klassifizieren Sie deren
+ Stabilität.
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[Fallschirmsprung]
+ Felix Baumgartner springt aus 39\,km Höhe zur Erde. Nehmen wir an, dass seine
+ Fallgeschwindigkeit $v(t)$ durch die Gleichung
+ \begin{equation}\label{eq:ode2}
+  m \dot{v} = mg - kv^2
+ \end{equation}
+ beschrieben wird, wobei $m$ die Masse von Herrn Baumgartner, $g$ die
+ Erdbeschleunigung und $k>0$ eine Konstante für den Luftwiderstand ist.
+ \begin{enumerate}
+  \item Bestimmen Sie eine analytische Lösung von (\ref{eq:ode2}) mit der
+        Anfangsbedingung $v(0)=0$.
+  \item Bestimmen Sie die Grenzgeschwindigkeit $v(t)$ für $t\rightarrow\infty$.
+  \item Analysieren Sie (\ref{eq:ode2}) graphisch und bestimmen Sie die
+        Stabilität der Gleichgewichtslösung(en).
+ \end{enumerate}
+
+\end{aufg}
+
+
+\bigskip
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

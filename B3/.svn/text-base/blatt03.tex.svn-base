@@ -1,0 +1,51 @@
+% Uebungsaufgaben zur Vorlesung MoSi 3
+
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+
+\setcounter{blatt}{3}
+
+\begin{document}
+\input{../opening.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{aufg}[Potentiale]
+Untersuche die Dynamik folgender Systeme mit dem Potentialansatz: 
+  \begin{enumerate}[a)]
+  \item $\dot{x} = x(1-x)$
+  \item $\dot{x} = -\sinh(x)$
+  \item $\dot{x} = -x^3 +x$
+ \end{enumerate}
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[Numerisches L\"osen einer gew\"ohnlichen DGL]
+ Eine einfache Methode zum L\"osen eines Anfangswertproblems (AWP)\begin{equation*} \dot{x}(t) = f(x(t)), \qquad x(t_0) = x_0\end{equation*} ist das \textbf{explizite Trapezverfahren}\begin{align*} x_{i+1} &= x_i + \frac{\tstep_i}{2}\left(f(x_i) + f(x_i + \tstep_i f(x_i))\right), \qquad i = 0,1,2,\ldots  \end{align*} 
+\begin{enumerate}[a)]
+\item Implementiere dieses Verfahren und wende es auf das AWP aus Aufg. 1.2, definiert auf dem Zeithorizont $[0,\tend = 300]$ mit $g = 9.81 \ \si{m.s^{-1}}, k = 0.73 \ \si{kg.m^{-1}}, m = 120 \ \si{kg}$ f\"ur eine \"aquidistante Schrittweite, \zB $\tstep_i = \tstep = 1$, an. 
+\item Gib den Fehler bzgl. der exaken L\"osung \begin{equation*} v(t) = \frac{\tanh(t\sqrt{(kg)/m}+1)\sqrt{g}}{\sqrt{k/m}}\end{equation*} aus. 
+\item Zeige, dass das Verfahren die globale Fehlerordnung 2 besitzt, d.h. nach $N$ Zeitschritten gilt \begin{equation*} |x(t_N) - x_N| \in \bigO(\tstep^2).\end{equation*}  
+Tipp: Taylorentwicklung.
+\end{enumerate}
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+\begin{aufg}[Zusatz: Simple Schrittweitensteuerung]
+Eine äquidistante Schrittweite mag nicht immer die beste Wahl sein. Eine einfache \textbf{Schrittweitensteuerung} geht wie folgt: Sei $\hat{x}_i$ die diskrete L\"osung des Trapezverfahrens (2. Ordnung) im $i.$-ten Schritt und $x_i$ die diskr. L\"osung des im Trapezverfahren verwendeten expliziten Eulers (1. Ordnung). Dann errechnet sich der neue Zeitschritt durch \begin{equation} \label{szctrl}\tstep_{i+1} = \tstep_i\cdot\left(\frac{tol}{|\hat{x}_i-x_i|}\right)^{\frac{1}{2}}.\end{equation}   
+\end{aufg}
+Implementiere \eqref{szctrl} f\"ur das explizite Trapezverfahren und untersuche die Effizienz gegen\"uber einer \"aquidistanten Diskretisierung f\"ur verschiedene Startzeitschritte und Toleranzen $tol$. 
+
+\bigskip
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

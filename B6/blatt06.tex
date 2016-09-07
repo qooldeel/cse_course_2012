@@ -1,0 +1,74 @@
+% Uebungsaufgaben zur Vorlesung MoSi 3
+% Blatt 1
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+
+\setcounter{blatt}{6}
+
+\begin{document}
+\input{../opening.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{aufg}[Numerische Berechnung von Phasenportraits mehrdimensionaler nichtlinearer Systeme]
+Implementiere das \emph{klassische Runge-Kutta} Verfahren 4. Ordnung
+\begin{align*} 
+ Y_{k+1} &= Y_k + \frac{1}{6}(k_1 + 2(k_2+k_3) + k_4) \\
+\intertext{wobei} \\
+k_1 &= \tstep \,F(Y_k)\\
+k_2 &= \tstep \,F(Y_k + \tfrac{1}{2}k_1) \\
+k_3 &= \tstep \,F(Y_k + \tfrac{1}{2}k_2) \\
+k_4 &= \tstep \,F(Y_k + k_3)
+\end{align*}
+f\"ur folgende Modellprobleme und untersuche damit das Verhalten in Abh\"angigkeit von verschiedenen Anfangswerten und Parametern:
+\begin{enumerate}[a)]
+\item \textbf{Van-der-Pol Oszillator} (\"uberf\"uhrt in ein System erster DGL) \begin{align*} 
+  \dot{y}_1 &= y_2 \\
+  \dot{y}_2 &= \mu(1- y_1^2)y_2 - y_1
+\end{align*}
+mit $\mu \in \RR.$ Wie \"andert sich die Eigenschaft des Fixpunktes $(0,0)^{\mathrm{T}}$ f\"ur $-2.5 \leq \mu \leq 2.5$? 
+\item \textbf{Lotka-Volterra Beute-R\"auber-Modell} \begin{alignat*}{2} 
+  \dot{y}_1 &= y_1(\alpha - \beta y_2) &\qquad\qquad &\text{Beute}\\
+  \dot{y}_2 &= -y_2(\gamma - \delta y_1) &\qquad\qquad &\text{R\"auber}
+\end{alignat*}
+mit $\alpha, \beta, \gamma, \delta > 0.$ 
+%\item Lorenz-Attraktor \begin{align*}  %Vielleicht momentan zu schwer
+%  \dot{y}_1 &= \sigma(y_2 - y_1) \\
+%  \dot{y}_2 &= y_1(\rho- y_3) - y_2 \\
+%  \dot{y}_3 &= y_1y_2 - \beta y_3.\end{align*}
+\end{enumerate}
+(Hierbei wurde die Abh\"angigkeit der Variablen bzgl. der Zeit aus Gr\"unden der Anschaulichkeit fallen gelassen.)\\
+Wie sind die Parameter in den jeweiligen Modellen zu verstehen?
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\vfill\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[Steife AWP: Explizite vs implizite Verfahren]
+\textit{Steife} AWP stellen besondere Herausforderungen an numerische Verfahren.
+Ein einfaches steifes AWP ist das \emph{Davis-Skodje} System \begin{align} 
+\label{davisskodje}
+\dot{y}_1(t) &= -y_1(t) \notag\\
+\dot{y}_2(t) &= -\gamma y_2(t) + \frac{(\gamma -1)y_1(t) + \gamma y_1(t)^2}{(1+y_1(t))^3} \qquad \quad \gamma > 0 \notag\\
+& \\
+y_1(0) &= 3 \notag\\
+y_2(0) &= 1.5. \notag
+\end{align}
+Sei $\gamma = 60$. L\"ose \eqref{davisskodje} auf dem Zeithorizont $[0,1]$ f\"ur die \"aquidistante Schrittweite $\tstep = 0.03$ wie folgt:
+\begin{enumerate}[a)]
+\item Expliziter Euler $Y_{k+1} = Y_k + \tstep \,F(Y_k), \ k = 0,1,2,\ldots$.
+Was stellt man bzgl. der exakten L\"osung \begin{align*} y_1(t) &= c_1 \exp(-t) \\ y_2(t) &= c_2\exp(-\gamma t) + \frac{c_1}{c_1 + \exp(t)}\end{align*} fest? Bestimme hierf\"ur zun\"achst $c_1, c_2$ in Abh\"angigkeit des Anfangswertes. Welches Verhalten sieht man f\"ur $\tstep \rightarrow 0$?
+\item \emph{Impliziter Euler} $Y_{k+1} = Y_k + \tstep\, F(Y_{\mathbf{k+1}}), k = 0,1,2,\ldots$. Dies erfordert jedoch das L\"osen des nichtlinearen GS in jedem Zeitschritt: \begin{align*} G(Y_{k+1}) &:= Y_{k+1} - Y_k - \tstep\, F(Y_{k+1}) \stackrel{!}{=} 0\end{align*} welches mit Hilfe des Newton Verfahrens \begin{align*} G'(Y_{k+1}^{\iter})\delta &= -G(Y_{k+1}^{\iter}), \quad Y_{k+1}^{\iter+1} = Y_{k+1}^{\iter} + \delta, \qquad \iter = 0,1,2,\ldots \\ Y_{k+1}^{[0]} &= Y_{k}\end{align*} gel\"ost werden kann. Implementiere den impliziten Euler analog zu Teil a) und benutze dabei die analytische Jacobimatrix. Was f\"allt auf im Vgl. zum expliziten Euler? 
+\end{enumerate}
+\end{aufg}
+
+
+\bigskip
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

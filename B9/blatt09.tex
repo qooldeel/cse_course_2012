@@ -1,0 +1,83 @@
+% Uebungsaufgaben zur Vorlesung MoSi 3
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+
+\setcounter{blatt}{9}
+
+
+\begin{document}
+\input{../opening.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{aufg}[Kurzversion von Aufgabe 8.2]
+ Hier noch einmal das Wesentliche von Aufgabe 8.2, bei der wir stehen geblieben
+ waren:
+
+ Die FHN-Gleichungen sind gegeben durch
+ \begin{align}
+  \dot{u}      =&\ f(u) - v + I_{\rm a}\notag\\
+  \dot{v}      =&\ \varepsilon \left(u - \gamma v + \delta\right)\label{eq:FHN}\\
+  f(u) \coloneqq&\ u\left(a-u\right)\left(u-1\right)\notag
+\end{align}
+mit Spannung $u$ und kombinierter Kraft $v$.
+Außerdem ist $I_{\rm a}$ eine Stromstärke, die von außen angelegt ist.
+Die Parameterwerte sind $\varepsilon = 0.01$, $\gamma = 0.5$,
+$\delta = 0$ und $a = -1$.
+
+\begin{enumerate}[(A)]
+ \item Nutzen Sie die \texttt{MATLAB}-Codes zu Blatt~7, um (\ref{eq:FHN})
+       numerisch zu lösen. Variieren Sie dabei die angelegten Stromstärke
+       zwischen 0 und 1.
+ \item Plotten Sie ein Phasenportrait des Modells. Zeichnen Sie
+       die Nullklinen und die Trajektorie aus (A) ein.
+ \item In der Diplomarbeit \url{http://www.siehr.net/publications/Siehr2007.pdf}
+       behauptet der Autor auf S.~21, dass bei einem Wert von
+       $I_{\rm a}^{\rm H} \coloneqq 0.4763$ eine Hopf-Bifurkation auftritt.
+       Überprüfen Sie diese Behauptung mit numerischen Experimenten.
+\end{enumerate}
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[FitzHugh--Nagumo-Modell, Fortsetzung]
+Ändern Sie im Modell von Aufgabe 9.1 den Parameter $\delta$ auf $\delta = 0.5$.
+Und wählen Sie $I_{\rm a}=0$.
+Setzen Sie die Anfangswerte auf die Werte im Gleichgewicht. Variieren Sie die
+angelegte Spannung $I_{\rm a}\in [0,0.04]$ und simulieren Sie das System:
+In diesem Zustand heißt das System \emph{erregbar}.
+\end{aufg}
+
+
+
+%------------------------------------------------------------------------------%
+\bigskip%\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[Lyapunov-Funktion]
+Gegeben sei das System
+\begin{equation}\label{eq:2d-lya}
+\begin{aligned}
+ \dot{x} &= -2x - y^2\\
+ \dot{y} &= -x^2 - y.
+\end{aligned} 
+\end{equation}
+Finden Sie eine Lyapunov-Funktion von (\ref{eq:2d-lya}) f\"ur den Fixpunkt
+im Ursprung.
+\end{aufg}
+
+
+
+
+
+
+\bigskip
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

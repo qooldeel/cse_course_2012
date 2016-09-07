@@ -1,0 +1,1 @@
+set xrange[0:1.5]; set yrange[0:9]; plot (4*x-1)/x**2 title "x' = 0", 3/x title "y' = 0"

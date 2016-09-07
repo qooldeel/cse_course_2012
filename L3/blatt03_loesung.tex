@@ -1,0 +1,57 @@
+% Uebungsaufgaben zur Vorlesung MoSi 3
+% Blatt 1
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+
+\setcounter{blatt}{3}
+
+\begin{document}
+\input{../opening_sol.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{loes}[Potentiale]
+  Allgemeines Vorgehen:
+  \begin{enumerate}
+    \item $-\frac{d V}{dx} = f(x)$
+    \item $V(x) = \int \frac{d V}{dx}dx = -\int f(x) dx + C$
+    \item Setze $C = 0$
+    \item Finde Extremalstellen $x^*$, d.h. $V'(x^*) = 0$
+    \item Untersuche diese: \begin{itemize} \item[] $V''(x^*) >0$ \ding{220} Minimalstelle \ding{220} stabiler Fixpunkt \item[] $V''(x^*) < 0$ \ding{220} Maximalstelle \ding{220} instabiler Fixpunkt \item Alternativ: Erstelle Schaubild von $V(x) $\end{itemize}
+  \end{enumerate}
+  \begin{enumerate}[a)]
+    \item \begin{align*} -\frac{dV}{dx} &= -x^2 +x \\ V(x) &= \frac{1}{3} x^3 - \frac{1}{2}x^2 + C, \qquad C := 0 \\ V'(x) &= x^2 - x = x(x-1) \stackrel{!}{=} 0 \Rightarrow x_{1,2} = 0,1 \\ V''(x) &= 2x -1 \\ &\Rightarrow V''(0) = -1 \ \textrm{Maximalstelle (instabiler Fixpkt)},  V''(1) = 1 \ \textrm{Minimalstelle (stabiler Fixpunkt)}\end{align*}
+\item \begin{align*} V(x) & = \cosh(x) + C, \  V'(x) = \sinh(x) = \frac{e^x - e^{-x}}{2} \stackrel{!}{=}0 \Rightarrow x^* = 0 \\ V''(x) &= \cosh(x) = \frac{e^x + e^{-x}}{2}|_{x^*} = 1 \ \textrm{\ding{220} lok. Mini. (stabiler Fixpunkt)}  \end{align*}
+\item \begin{align*} V(x) & = \frac{1}{4}x^4 - \frac{1}{2}x^2 + C, \  V'(x) = x^3 - x = x(x^2-1)\stackrel{!}{=}0 \Rightarrow x^*_{1,2,3} = 0,1,-1 \\ V''(x) &= 3x^2-1 \Rightarrow V''(0) = -1 \ \textrm{Maxi. (instabil)}, \ V''(1) = V''(-1) = 2 \ \textrm{Mini. (bistabil)} \end{align*}
+  \end{enumerate}
+\end{loes}
+
+\begin{loes}[Numerisches L\"osen einer gew. DGL]
+Teil c): \underline{Diskretisierungsfehler:}
+Wir betrachten das AWP \begin{equation}\label{awp} \dot x(t) = f(x(t)), \qquad x(t_0) = x_0\end{equation}
+Taylorentwicklung der exakten L\"osung nach $t_0$ und Benutzung von \eqref{awp} zum Vereinfachen f\"uhrt auf:
+\begin{align*} 
+x(t_1) \equiv x(t_0 + \tstep) &\approx x(t_0) + \dot x(t_0)\tstep + \ddot x(t_0)\frac{\tstep^2}{2} + x^{(3)}(t_0)\frac{\tstep^3}{6} + \bigO(\tstep^4)\\
+&= x_0 + f(x_0)\tstep + f_x(x_0)f(x_0)\frac{\tstep^2}{2} + \big(f_{xx}(x_0)(f(x_0))^2 + (f_x(x_0))^2f(x_0)\big)\frac{\tstep^3}{6} \\ &+ \bigO(\tstep^4). 
+\end{align*}
+\"Ahnlich verfahren wir mit der Iterationsvorschrift f\"ur das Trapezverfahrens:
+\begin{align*} 
+x_1 &= x_0 + \frac{\tstep}{2}f(x_0) + \frac{\tstep}{2}\underbrace{f(x_0 + \tstep f(x_0))}_{\mathrm{Taylor \ um\ } x_0} \\
+&= x_0 + \frac{\tstep}{2}f(x_0) + \frac{\tstep}{2}\big(f(x_0) + \tstep f(x_0)f_x(x_0) + \bigO(\tstep^2)\big)\\
+&= x_0 + \tstep f(x_0) + \frac{\tstep^2}{2}f(x_0)f_x(x_0) + \bigO(\tstep^3). 
+\end{align*}
+Also \begin{align*} |x(t_1) - x_1| \approx \frac{1}{6}\big(f_{xx}(x_0)(f(x_0))^2 + (f_x(x_0))^2f(x_0)\big)\tstep^3 \in \bigO(\tstep^3).  \end{align*}
+Da wir $N = \tend/\tstep \in \bigO(\tstep^{-1})$ \"aquidistante Schritte voranschreiten, folgt $|x(t_N) - x_N| \in \bigO(\tstep^2).$ \quoterat
+\end{loes}
+
+
+\bigskip
+\hrule
+\begin{flushright}
+\end{flushright}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

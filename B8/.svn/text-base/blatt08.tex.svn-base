@@ -1,0 +1,86 @@
+% Uebungsaufgaben zur Vorlesung MoSi 3
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+
+\setcounter{blatt}{8}
+
+\begin{document}
+\input{../opening.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{aufg}[Elektron im Potentialkasten]
+Wir betrachten Elektronen in einem Potentialkasten.
+\begin{enumerate}[(A)]
+ \item Berechnen und zeichnen Sie für ein Elektron, das sich in einem Kasten der Länge
+$L=1$\,\AA\ befindet, die Energien $E_n$ der Eigenzustände $\Psi_n(x)$ und
+die zugehörigen Aufenthaltswahrscheinlichkeiten für die Quantenzahlen $n=1,2,3$.
+ \item Berechnen Sie die Anzahl der Eigenzustände eines Elektrons in einem Kasten der
+ Länge $L=100$\,\AA, deren Energie kleiner oder gleich dem Zahlenwert von $E_3$ aus (A) ist.
+ \item Nehmen Sie an, dass im 1,3,5-Hexatrien (CH$_2$=CH-CH=CH-CH=CH$_2$) die sechs
+ $\pi$-Elektronen über die ganze Länge des Moleküls frei beweglich sind. Das Grundgerüst des Moleküls
+ (Kerne und $\sigma$-Elektronen) soll als ein eindimensionaler Kasten, der von unendlich
+ hohen Potentialwällen begrenzt ist, angesehen werden. Die Länge der C-C-Bindung
+ beträgt 1.54\,\AA, die der C=C-Bindung 1.35\,\AA. Zeichnen Sie die Wellenfunktion
+ $\Psi_n(x)$ und die Wahrscheinlichkeitsverteilungen für die vier untersten
+ Energie-Eigenzustände eines $\pi$-Elektrons. Berechnen Sie die Energie und Quantenzahl
+ $n$ des höchsten besetzen Zustands. Zeichen Sie die gesamte $\pi$-Elektronendichte
+ für das Hexatrien im Grundzustand. Berechnen Sie die Wellenlänge im Hexatrien-Absorptionsspektrum
+ für den Übergang in den ersten elektronisch angeregten Zustand.
+\end{enumerate}
+\end{aufg}
+
+
+
+%------------------------------------------------------------------------------%
+\bigskip%\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[FitzHugh--Nagumo Modell]
+ Die FitzHugh--Nagumo (FHN) Gleichungen sind eine einfache Reformulierung des
+ Hodgkin--Huxley-Modells, f\"ur welches Hodgkin und Huxley
+ den Medizin-Nobelpreis 1952 gewannen.
+ 
+ Das Hodgkin--Huxley-Modell simuliert die
+ elektrische Signalübertragung des Tintenfisch-Riesenaxons.
+ Das Riesenaxon kann als langer, dünner Kanal angesehen werden, an dessen äußerer
+ Membran Signale entlang laufen. Die FHN-Gleichungen beschreiben dieselben
+ Phänomene wie das Hodgkin--Huxley-Modell und sind gegeben durch
+ \begin{align}
+  \dot{u}      =&\ f(u) - v + I_a\notag\\
+  \dot{v}      =&\ \varepsilon \left(u - \gamma v + \delta\right)\label{eq:FHN}\\
+  f(u) \coloneqq&\ u\left(a-u\right)\left(u-1\right)\notag,
+\end{align}
+wobei $u$ die Spannung auf der Membran modelliert und $v$ eine kombinierte Kraft
+repräsentiert, die nötig ist, um einen Ruhezustand zu erreichen. Weiter repräsentiert
+$I_{\rm a}$ eine Stromstärke, die von außen angelegt ist.
+Die Parameterwerte sind gegeben als $\varepsilon = 0.01$, $\gamma = 0.5$,
+$\delta = 0$ und $a = -1$.
+
+\begin{enumerate}[(A)]
+ \item Nutzen Sie die \texttt{MATLAB}-Codes zu Blatt~7, um (\ref{eq:FHN})
+       numerisch zu lösen. Variieren Sie dabei die angelegten Stromstärke
+       zwischen 0 und 1.
+ \item Plotten Sie ein Phasenportrait des Modells. Zeichnen Sie
+       die Nullklinen und die Trajektorie aus (A) ein.
+ \item In der Diplomarbeit \url{http://www.siehr.net/publications/Siehr2007.pdf}
+       behauptet der Autor auf S.~21, dass bei einem Wert von
+       $I_{\rm a}^{\rm H} \coloneqq 0.4763$ eine Hopf-Bifurkation auftritt.
+       Überprüfen Sie diese Behauptung mit numerischen Experimenten.
+%        Da der Wert
+%        offensichtlich nicht stimmen kann:       
+%        Berechnen Sie den Parameterwert $I_{\rm a}^{\rm H}$, an dem die
+%        Hopf-Bifurkation auftritt, analytisch für die gegebenen Parameterwerte.
+\end{enumerate}
+\end{aufg}
+
+\bigskip
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

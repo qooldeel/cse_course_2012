@@ -1,0 +1,86 @@
+% Uebungsaufgaben zur Vorlesung MoSi 3
+% Blatt 1
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+
+\setcounter{blatt}{5}
+
+\begin{document}
+\input{../opening.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{aufg}[Pitchfork-Bifurkation]
+ Analysieren Sie die folgenden Differentialgleichung, und zeigen Sie, dass eine
+ Pitchfork-Bifurkation auftreten kann. Ist diese super- oder subkritisch?
+ \begin{enumerate}[(i)]
+  \item $\dot{x} = x + rx^3$
+  \item $\dot{y} = y - ry^3$
+  \item $\dot{z} = z + \tfrac{rz}{1+z^2}$.
+ \end{enumerate}
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\vfill\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[Insektenplage]
+Der \emph{spruce budworm} (Fichten-Knospenbohrer?) ist ein Schädling in
+Ost-Kanada, der dort ganze Wälder zerstört. Die Dynamik des Waldes kann als
+konstant angesehen werden. Die Dynamik der Wurmpopulation kann durch
+\begin{equation*}
+ \dot{N} = RN \left( 1- \frac{N}{K} \right) - p(N)
+\end{equation*}
+beschrieben werden.
+Die Wurmpopulation wächst logistisch, wenn keine Räuber vorhanden sind. Der
+Parameter $K$ wird bestimmt durch die Menge an Laub in den Bäumen und ändert sich
+mit den Jahreszeiten.
+
+Der Term $p(N)$ beschreibt den Tod durch \glqq{}gefressen
+werden\grqq{}: Ab einer bestimmten Populationsgröße beginnen die Vögel, die
+Würmer zu fressen, so schnell sie können. Dieses Verhalten wird durch
+\begin{equation*}
+ p(N) = \frac{BN^2}{A^2 + N^2}
+\end{equation*}
+mit $A,B>0$ modelliert.
+
+\begin{enumerate}[A)]
+ \item Entdimensionalisieren Sie die Diffentialgleichung, indem Sie sie durch
+       $B$ teilen und in die Variable $x:=\tfrac{N}{A}$ transformieren.
+       Benutzen Sie auch die dimensionslose Zeit $\tau:=\tfrac{Bt}{A}$ und
+       Paramter $r:=\tfrac{RA}{B}$, $k:=\tfrac{K}{A}$.
+ \item Bestimmen Sie die Fixpunkte der dimensionslosen Differentialgleichung.
+ \item Bestimmen Sie die Stabilität der Fixpunkte (evtl.\ graphisch)
+       in Abhängigkeit von $k$ und $r$.
+ \item Berechnen Sie Bifurkationskurven: Kurven in der $(k,r)$-Ebene in Abhängigkeit
+       von $x$, an deren Punkte eine Bifurkation auftritt.
+\end{enumerate}
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\vfill\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[Phasenportrait]
+Mit dem Befehl \texttt{quiver} können Sie Phasenportraits in \texttt{MATLAB} schnell
+und einfach erstellen. Schreiben Sie sich eine Funktion, mit deren Hilfe Sie
+die Phasenportraits folgender Systeme ansehen können:
+ \begin{enumerate}[(i)]
+  \item $\dot{x} = x-y, \quad \dot{y} = 1 - \mathrm{e}^x$
+  \item $\dot{x} = x-x^3, \quad \dot{y} = -|y|$
+  \item $\dot{x} = y \sin(x), \quad \dot{y} = x^2 - y$.
+ \end{enumerate}
+\end{aufg}
+
+
+
+
+\bigskip
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

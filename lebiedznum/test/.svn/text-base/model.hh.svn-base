@@ -1,0 +1,140 @@
+#ifndef MODELS_FOR_ODES_HH
+#define MODELS_FOR_ODES_HH
+
+#include <iostream>
+#include <cassert>
+
+
+namespace lebnum{
+
+  template<class T>
+  class DavisSkodje{
+  public:
+    typedef T value_type;
+    typedef std::size_t size_type;
+    typedef Vector<T> VType;
+
+    //!default gamma is taken to be 60, but feel free to use other vals 
+    DavisSkodje(const T& gamma = 60):rhs_(2),gamma_(gamma){}
+
+    size_type domain_dim() const {return 2;}
+    size_type range_dim() const {return 2;}
+
+    VType& operator()(const VType& y){
+      rhs_[0] = -y[0];
+      rhs_[1] = -gamma_*y[1] + ((gamma_-1)*y[0] + gamma_*y[0]*y[0])/((1+y[0])*(1+y[0]));
+      return rhs_;
+    }
+    
+
+  private:
+    VType rhs_;
+    T gamma_;
+  };
+
+
+  //!examples: mechanical clock or vibrating string
+  template<class T>
+  class VanDerPolOscillator{
+  public:
+    typedef T value_type;
+    typedef std::size_t size_type;
+    typedef Vector<T> VType;
+
+    VanDerPolOscillator(const T& mu):rhs_(2),mu_(mu){}
+
+    size_type domain_dim() const {return 2;}
+    size_type range_dim() const {return 2;}
+
+    VType& operator()(const VType& y){
+      rhs_[0] = y[1];
+      rhs_[1] = mu_*(1 - y[0]*y[0])*y[1] - y[0];
+      
+      return rhs_;
+    }
+      
+
+  private:
+    VType rhs_;
+    T mu_;
+  };
+
+
+  //! predetor-prey model: a simple but not very realistic example of 
+  //! two rivaling species
+  template<class T>
+  class LotkaVolterra{
+  public:
+    typedef T value_type;
+    typedef std::size_t size_type;
+    typedef Vector<T> VType;
+
+    LotkaVolterra(const T& a, const T& b, const T& c, const T& d):rhs_(2),alpha_(a),beta_(b),gamma_(c),delta_(d){}
+
+    size_type domain_dim() const {return 2;}
+    size_type range_dim() const {return 2;}
+
+
+    VType& operator()(const VType& y){
+      rhs_[0] = y[0]*(alpha_ -beta_*y[1]);     //!rate of number of rabbits
+      rhs_[1] = -y[1]*(gamma_ - delta_*y[0]);  //!rate of number of foxes
+      
+      return rhs_;
+    }
+
+  private:
+    VType rhs_;
+    T alpha_,beta_,gamma_,delta_;
+  };
+
+  
+  /**
+   * \brief Brusselator: an easy example of an oscillating chemical reaction
+   *
+   * This model has been taken from
+   *
+   *  [S.H.STROGAT, "Nonlinear Dynamics and Chaos", Addison-Wesely,1994,p. 290]
+   */
+  template<class T>
+  class Brusselator{
+  public:
+    typedef T value_type;
+    typedef std::size_t size_type;
+    typedef Vector<T> VType;
+
+    Brusselator(const T& a, const T& b):rhs_(2),a_(a),b_(b){}
+
+    size_type domain_dim() const {return 2;}
+    size_type range_dim() const {return 2;}
+    
+    VType& operator()(const VType& w){      
+      rhs_[0] = 1 - (b_+1)*w[0] + a_*w[0]*w[0]*w[1];
+      rhs_[1] = b_*w[0] - a_*w[0]*w[0]*w[1];
+
+      return rhs_;
+    }
+    
+    void change_a(const T& a){
+      a_ = a;
+    }
+
+    void change_b(const T& b){
+      b_ = b;
+    }
+
+    T nullclineX(const T& x) const{
+      return ((b_+1)*x -1)/(a_*x*x);
+    }
+
+    T nullclineY(const T& x) const{
+      return b_/(a_*x);
+    }
+    
+  private:
+    VType rhs_;
+    T a_,b_;  
+  };
+
+} //end namespace
+
+#endif

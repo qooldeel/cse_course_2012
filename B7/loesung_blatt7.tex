@@ -1,0 +1,55 @@
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+\setcounter{blatt}{7}
+
+\begin{document}
+\input{../opening.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{aufg}[Analytische Fixpunktanalyse]
+Wir betrachten nun 2-dimensionale nichtlineare Systeme $\dot{y} = F(y), $ wobei \begin{alignat*}{2} y &:= (y_1,y_2)\transx \in \RR^2 \quad &\text{und}\quad F(y)&:= (F_1(y), F_2(y))\transx. \end{alignat*}
+Das Van-der-Pol System ist gegeben durch:
+ \begin{align*} 
+  \dot{y}_1 &= y_2 \\
+  \dot{y}_2 &= \mu(1- y_1^2)y_2 - y_1.
+\end{align*}
+\begin{enumerate}
+\item \textbf{Fixpunktbestimmung:}\\ Bei einem Fixpunkt ist die rechte Seite Null, d.\,h.
+\begin{align} F(y_1,y_2) \label{fixed}&= \begin{bmatrix} y_2 \\  \mu(1- y_1^2)y_2 - y_1\end{bmatrix} =  \begin{bmatrix} 0 \\ 0\end{bmatrix}. \end{align}  
+Wir l\"osen beide Gleichungen in \eqref{fixed} gleichzeitig: Aus der oberen folgt $y_2 = 0$, eingesetzt in die unter folgt $y_1 = 0.$ Der einzige Fixpunkt ist demnach $y^* = (0,0)\transx.$
+\item \textbf{Fixpunktcharakterisierung (Be wise, linearize):} \\ Bilde die Jacobi-Matrix von $F(y)$:
+ \begin{align*} F'(y) &= \begin{bmatrix} \partdiff{y_1}F_1 &\partdiff{y_2}F_1 \\\partdiff{y_1}F_2 &\partdiff{y_2}F_2 \end{bmatrix}_{|(y_1,y_2)\transx} = \begin{bmatrix} 0 & 1 \\ -2\mu y_1y_2-1 & \mu - \mu y_1^2\end{bmatrix}.\end{align*} Setzte den Fixpunkt ein und erhalte \begin{align*} F'(y^*) = \underbrace{\begin{bmatrix} 0 & 1 \\ -1 & \mu \end{bmatrix}}_{:= A}.\end{align*}
+ Nun berechnen wir die Eigenwerte (EW) von $A$: \begin{align*} \det(A-\lambda I) = \det\begin{bmatrix} -\lambda & 1 \\ -1 & \mu-\lambda\end{bmatrix} = \lambda^2 - \mu \lambda +1 \stackrel{!}{=}0.\end{align*} L\"osen der quadratischen Gleichung f\"uhrt auf \begin{equation*} \lambda_{1,2} = \frac{\mu \pm \sqrt{\mu^2 -4}}{2}.\end{equation*} Folgende F\"alle bzgl. des Parameters $\mu$ ergeben sich f\"ur den \emph{Radikanden} $\radicand := \mu^2 -4$
+\begin{itemize}
+\item $\radicand > 0 \rightarrow \mu > \pm 2:$ Die EW sind reell und haben unterschiedliche Vorzeichen (\textbf{Sattelpunkt}) oder dasselbe Vorzeichen (\textbf{Knoten}). 
+\item $\radicand < 0: $ komplex konjugierte EW (\textbf{Spiralen und Zentren}).
+Haben beide EW negative Realteile, dann ist der Punkt \textbf{stabil}. Sind die Eigenwerte rein imagin\"ar, so haben wir \textbf{neutral-stabile Zentren}
+\item $\radicand = 0: $ Diese Parabel stellt die Grenze zw. Knoten und spiralen dar. Sterne (Sternknoten) und degenerierte Knoten befinden sich auf jener Parabel und $\mu$ bestimmt die Stabilit\"at der Knoten und Spiralen.
+\end{itemize}
+Definiere f\"ur eine komplexe Zahl $z = a + bi \in \CC$ mit $\Re(a)$ den \textit{Realteil} und mit $\Im(a)$ den \textit{Imagin\"arteil} von $z$.
+D.\,h. also ganz speziell ():
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+$\mu$ & \textbf{Fixpunkt} & \textbf{Eigenwert}\\
+\hline \hline
+$0 < \mu < 2$ & Instabiler Fokus & $\Re(\lambda_1),\Re(\lambda_2) > 0$\\
+$-2 < \mu < 0$ & Stabiler Fokus & $\Re(\lambda_1), \Re(\lambda_2) < 0$ \\
+$\mu > 2$ & Instabiler Knoten & $\lambda_1,\lambda_2 > 0$  \\
+$\mu < -2$ & Stabiler Knoten & $\lambda_1,\lambda_2 < 0$  \\
+$\mu = 2$ & Instabiler Stern & $\Im(\lambda_1),\Im(\lambda_2) = 0, \Re(\lambda_1),\Re(\lambda_2)>0$ \\
+$\mu = -2$ & Stabiler Stern & $\Im(\lambda_1),\Im(\lambda_2) = 0, \Re(\lambda_1),\Re(\lambda_2)<0$ \\
+$\mu = 0$ & Elliptisch & $\Re(\lambda_1),\Re(\lambda_2) = 0$\\
+\hline 
+\end{tabular}
+\end{center}
+
+\end{enumerate} 
+\end{aufg}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

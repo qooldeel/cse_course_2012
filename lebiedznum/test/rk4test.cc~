@@ -1,0 +1,30 @@
+#include <fstream>
+#include <string>
+#include "lebnum.hh"
+
+/**
+ * Solve y'' + 4y' + 3y = 0, y(0) = 2, y'(0) = -4
+*/
+template<class T>
+class SecondOrderODE{
+public:
+  typedef T value_type;
+  typedef std::size_t size_type;
+  typedef lebnum::Vector<T> VType;
+
+  SecondOrderODE(const T& mu):rhs_(2){}
+
+  size_type domain_dim() const {return 2;}
+  size_type range_dim() const {return 2;}
+
+  VType& operator()(const VType& u){
+    rhs_[0] = u[1];
+    rhs_[1] = u[1] + 5*u[0] + exp(-2
+    
+    return rhs_;
+  }
+
+
+  private:
+    VType rhs_;
+};

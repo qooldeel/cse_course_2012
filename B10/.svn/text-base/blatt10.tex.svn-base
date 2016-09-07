@@ -1,0 +1,158 @@
+% Uebungsaufgaben zur Vorlesung MoSi 3
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+
+\setcounter{blatt}{10}
+
+
+\begin{document}
+\input{../opening.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{aufg}[Immer noch FitzHugh--Nagumo-Modell]
+Das Modell ist gegeben durch
+ \begin{align*}
+  \dot{u}      =&\ f(u) - v + I_{\rm a}\\
+  \dot{v}      =&\ \varepsilon \left(u - \gamma v + \delta\right)\\
+  f(u) \coloneqq&\ u\left(a-u\right)\left(u-1\right)
+\end{align*}
+mit Spannung $u$ und kombinierter Kraft $v$.
+Außerdem ist $I_{\rm a}$ eine Stromstärke, die von außen angelegt ist.
+Die Parameterwerte sind $\varepsilon = 0.01$, $\gamma = 0.5$,
+$\delta = 0$ und $a = -1$.
+\medskip
+
+Wir wiederholen Aufgabe~9.2:\\
+Ändern Sie im Modell den Parameter $\delta$ auf $\delta = 0.5$,
+und wählen Sie $I_{\rm a}=0$.
+Setzen Sie die Anfangswerte auf die Werte im Gleichgewicht. Variieren Sie die
+angelegte Spannung $I_{\rm a}\in [0,0.04]$ und simulieren Sie das System:
+In diesem Zustand heißt das System \emph{erregbar}.
+Das Aktionspotential von Nervenzellen kann so simuliert werden.
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[FitzHugh--Nagumo-Modell: Bifurkationsanalyse]
+Wir wollen den Wert von $I_{\rm a}$ bestimmen, bei dem eine Hopf-Bifurkation
+auftritt. Dafür nutzen wir das Programm MatCont. Um das Programm zu nutzen,
+müssen Sie sich auf bart.mathematik.uni-ulm.de einloggen.
+
+Öffnen Sie eine Shell, und wählen Sie eine Zahl \texttt{XX}$\in[01,\dots,10]$.
+Loggen Sie sich auf bart ein, und ändern Sie das Passwort, damit Ihnen niemand
+in die Quere kommt.
+
+\begin{verbatim}
+> ssh -Y studentXX@bart.mathematik.uni-ulm.de
+> passwd
+\end{verbatim}
+
+Starten Sie einen vnc-Server und einen vnc-Viewer auf bart, wobei
+ $\texttt{YY} \coloneqq \texttt{XX} + 20$.
+
+\begin{verbatim}
+> vncstart
+> vncviewer :YY
+\end{verbatim}
+
+Falls Ihnen gnome nicht zusagt, können Sie in
+$\sim$/.vnc/xstartup
+auch lxde als graphische Oberfläche wählen. (Dann mit \texttt{vnckill} den vnc
+beenden und neu starten.)
+
+Öffnen Sie ein Terminal. Da Sie an einem Mac sitzen, müssen sie noch eine
+Umgebungsvariable exportieren, damit MATLAB startet.
+
+\begin{verbatim}
+> export LC_ALL="en_US.utf8"
+> cd Programmierung/matlab/matcont5p2
+> m
+\end{verbatim}
+In MATLAB starten Sie MatCont mit \texttt{matcont}. Damit sind die
+Vorbereitungen erledigt, und die Bifurkationsanalyse kann beginnen.
+%------------------------------------------------------------------------------%
+\pagebreak
+%------------------------------------------------------------------------------%
+\begin{enumerate}
+
+\item Geben Sie das Modell in MatCont ein. Dafür wählen Sie im Men\"u
+\texttt{Select>System>New}. Das Modell könnte so aussehen:
+\begin{figure}[h!]
+ \centering
+ \includegraphics[width=0.75\textwidth]{model}
+\end{figure}
+
+\item Jetzt geben Sie Anfangswerte für die Variablen und Parameter
+via \texttt{Type>Initial Point>Point} ein. Au{\ss}erdem k\"onnen Sie die
+Integrations-Optionen \"andern. Klicken Sie \emph{nicht} auf
+Select Cycle!
+\begin{figure}[h!]
+ \centering
+ \includegraphics[width=0.75\textwidth]{initial}
+\end{figure}
+
+
+\item Wir brauchen noch ein Plot-Fenster: W\"ahlen Sie \texttt{Window>Graphic>2Dplot}.
+Auf den Achsen sollten $u$ und $v$ aufgetragen werden. Passen Sie mit
+\texttt{Layout>Plotting region} die Plotgrenzen an.
+
+\item Jetzt soll das System nahe ans Gleichgewicht integriert werden. W\"ahlen
+Sie \texttt{Compute>Forward}.
+
+\item Wenn Sie vorher \texttt{Window>Numeric} geöffnet hätten, k\"onnten Sie die
+numerischen Werte verfolgen. Geben Sie also neue Anfangswerte in den
+``Starter'' ein, und integrieren Sie das System erneut mit \texttt{Compute>Forward}.
+
+\item Sollte obiger Schritt nicht funktionieren, geben Sie \texttt{why}
+in MATLAB ein.
+
+\item Wir wollen mit einem Fortsetzungs-, Pfadverfolgungs- oder
+Homotopieverfahren den Fixpunkt verfolgen, wenn
+sich der Parameter $I_{\rm a}$ \"andert. Daf\"ur muss das Gleichgewicht als
+Startwert geladen werden. \"Offnen Sie \texttt{Select>Initial Point}. W\"ahlen
+Sie einen Wert aus, der nahe am Gleichgewicht liegen sollte. (Anklicken, \texttt{Select}
+dr\"ucken.)
+
+\item W\"ahlen Sie \texttt{Type>Initial Point>Equilibrium}. Das Hauptfenster
+zeigt an: \texttt{EP\_EP(1)}, d.\,h. ``starte am Gleichgewicht, um ein
+Gleichgewicht zu verfolgen''. Sie bekommen zus\"atzlich ein Starter- und ein
+Continuer-Fenster.
+
+\item Im Starter aktivieren Sie den Parameter, der variiert werden soll.
+
+\item Im Continuer k\"onnen Sie die maximale Schrittweite etwas kleiner
+w\"ahlen, z.\,B.
+\begin{figure}[h!]
+ \centering
+ \includegraphics[width=0.75\textwidth]{starter_continuer}
+\end{figure}
+
+\item \"Andern Sie das Plot-Fenster via \texttt{Layout>\dots}, so dass
+$I_{\rm a}$ gegen $u$ aufgetragen wird.
+
+\item Nutzen Sie \texttt{Compute>Forward} oder \texttt{Compute>Backward}, um
+die Kurve der Nullstellen der rechten Seite der Differentialgleichung f\"ur
+verschiedene Werte von $I_{\rm a}$ zu erhalten. Benutzen Sie auch den
+Stop- und Resume-Knopf im neu aufgegangenen Fenster. MatCont zeigt eine Hopf-Bifurkation
+mit dem Symbol H im Plot an.
+
+\item \"Andern Sie im Numeric-Fenster \"uber \texttt{Window>Layout}, dass auch
+die Eigenwerte der Jacobi-Matrix angezeigt werden. Verfolgen Sie, dass an der
+Bifurkation tats\"achlich die Eigenwerte die imagin\"are Achse \"uberschreiten.
+Bei welchem Wert von $I_{\textrm{a}}^{\textrm{H}}$ tritt die Bifurkation also
+wirklich auf?
+\end{enumerate}
+\end{aufg}
+
+
+\medskip
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

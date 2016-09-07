@@ -1,0 +1,80 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Header fuer Uebungszettel                                                    %
+% Jochen Siehr                                                                 %
+% 2010-10-27                                                                   %
+% last-change 2010-12-20                                                       %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{german}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+\usepackage{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{epsfig}
+\usepackage{setspace}
+\usepackage{longtable}
+\usepackage{enumerate}
+\usepackage{eurosym}
+\usepackage{siunitx}
+\usepackage{pifont}
+\usepackage{color}
+
+\usepackage[ % letztes Paket!
+ linkbordercolor={1 1 1},
+ citebordercolor={1 1 1},
+ menubordercolor={1 1 1},
+ filebordercolor={1 1 1},
+ urlbordercolor={1 1 1},
+ pdfborder={0 0 0},
+ pdftitle={Uebungsblatt},
+ pdfauthor={Jochen Siehr}
+ ]{hyperref}
+\usepackage{breakurl} %muss danach kommen: AUSKOMMENTIEREN für pdflatex 
+
+\pagestyle{empty}
+\geometry{margin=20mm}
+\setlength{\parindent}{0em}
+
+
+\newcommand{\R}{\mathbbm{R}}
+\newcommand{\C}{\mathbbm{C}}
+\newcommand{\N}{\mathbbm{N}}
+\newcommand{\Z}{\mathbbm{Z}}
+
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+
+\newcommand{\CCC}{\mathcal{C}}
+\newcommand{\NNN}{\mathcal{N}}
+\newcommand{\LLL}{\mathcal{L}}
+\newcommand{\OOO}{\mathcal{O}}
+
+\newcommand{\T}{\mathrm{T}}
+\newcommand{\eqqcolon}{=\mathrel{\mathop:}}
+\newcommand{\coloneqq}{\mathrel{\mathop:}=}
+
+\newcounter{blatt}
+\newtheoremstyle{jochen}{}{}{}{}{\bfseries}{}{\newline}{}
+\theoremstyle{jochen}
+\newtheorem{aufg}{Aufgabe}[blatt]
+\newtheorem{loes}{L\"osungsskizze}[blatt]
+\newtheorem{ex}{Exercise}[blatt]
+\newtheorem{sol}{Solution}[blatt]
+
+
+
+\newcommand{\tstep}{\Delta t}
+\newcommand{\tend}{t_{\mathrm{end}}}
+\newcommand{\bigO}{\mathcal{O}}
+\newcommand{\quoterat}{\hspace{\fill}\qed}
+\newcommand{\zB}{z.\,B.\ }
+\newcommand{\iter}{[\nu]}
+\newcommand{\transx}{^{\mathrm{T}}}
+\newcommand{\partdiff}[1]{\partial_{#1}}
+\newcommand{\trace}{\operatorname{trace}}
+\newcommand{\radicand}{\mathcal{R}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

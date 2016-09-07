@@ -1,0 +1,103 @@
+% Uebungsaufgaben zur Vorlesung MoSi 3
+% Blatt 1
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+
+\setcounter{blatt}{7}
+
+\begin{document}
+\input{../opening.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{aufg}[Analytische Fixpunktanalyse]
+Ermittle analytisch den Fixpunkt des \emph{Van-der-Pol Oszillators} aus
+Aufg.\ 6.2 und charakterisiere ihn in Abh\"angigkeit des Parameters
+$\mu \in \RR.$ Verifiziere die Aussage mittels der numerischen Phasenportraits
+von \"Ubungsblatt 6.
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\vfill\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[SIR-Modell nach Kermack und McKendrick, 1927]
+Im SIR-Modell für eine Epidemie werden drei Bevölkerungsgruppen unterschieden:
+$S>0$ die Gesunden, die sich anstecken können (susceptible), $I>0$ die
+Infizierten (infected) und $R>0$ die Personen, welche die Krankheit (lebend)
+\"uberwunden haben (recovered), d.\,h.\  andere
+nicht mehr anstecken und sich selbst auch nicht mehr anstecken können.
+\begin{enumerate}[(A)]
+ \item Modellierung: Stellen Sie ein Dgl.-Modell in den Variablen $S$, $I$ und
+ $R$ auf, das die Änderung der Variablen über die Zeit beschreibt. Gehen Sie
+ davon aus, dass sich die Krankheit ausbreitet, indem sich Gesunde und
+ Infizierte begegnen, wobei ein Treffen mit der Infektiosität $\beta>0$ zur
+ Ansteckung führt. Infizierte Personen erholen sich mit der konstanten
+ Pro-Kopf-Erholungsrate $r>0$. In Analogie zur chemischen Reaktionskinetik kann
+ dieser Sachverhalt als
+  \begin{equation*}
+   S \stackrel{\beta}{\longrightarrow} I \stackrel{r}{\longrightarrow} R
+  \end{equation*}
+ geschrieben werden. (Tip: Die Dgl.\ f\"ur $I$ lautet $\dot{I}=\beta SI-rI$.)
+ \item Im Modell wird eine abgeschlossene Gruppe von Personen betrachtet, und
+ es treten keine demographischen Einflüsse wie Geburt oder anderweitiger Tod
+ auf. Daher ist die Gesamtzahl der Personen $N:=S+I+R$ konstant. Zeigen Sie
+ dies für das Modell. (Damit kann die Dgl.\ f\"ur $R$ entfallen, weil Sie
+ den Wert von $R$ zu jeder Zeit $t$ aus den anderen Werten berechnen können.)
+ \item Berechnen und klassifizieren Sie alle Gleichgewichte des Systems
+ analytisch.
+ \item Skizzieren Sie das Vektorfeld und die Nullklinen des Modells.
+ \item Angenommen, eine infizierte Person trifft auf eine Gruppe von 499
+ gesunden Menschen, die sich nicht impfen lassen und sich auch sonst nicht gegen
+ die Krankheit schützen. Wird es eine Epidemie geben? Lösen Sie das Dgl.-Modell
+ für verschiedene Parameter, z.\,B. $\beta=0.001$ und $r=0.1$ und
+ Populationsgrößen mit den gegebenen \texttt{MATLAB}-Funktionen. Plotten
+ Sie das Vektorfeld mit \texttt{quiver} und zeichnen Sie Lösungstrajektorien
+ in dieselbe Graphik.
+ \item In der Epidemieforschung spielt die Reproduktionsrate $R_0$ eine
+ wichtige Rolle: die durchschnittliche Zahl neuer Infizierter, die ein einzelner
+ Infizierter in einer komplett anfälligen, gesunden Population erzeugt.
+ Ist $R_0>1$, so bricht eine Epidemie aus. Ist $R_0<1$, so wird die Krankheit
+ nicht signifikant weiter übertragen.
+ Der Fall einer gesunden Population wird durch $S=N$, $R=0$ beschrieben. Eine
+ Person ist infiziert. Eine Epidemie tritt im SIR-Modell per Definition genau
+ dann auf, wenn $\dot{I}>0$. Stellen Sie
+ eine Formel für $R_0$ mit dem kritischen Wert von $\dot{I}$ auf.
+ Überprüfen Sie die Formel mit numerischen Tests: Simulationen des Modells für
+ verschiedene Werte. (Tip: $R_0=\tfrac{\beta N}{r}$)
+ \item Impfung schützt Individuen vor der Ansteckung! Aber auch eine genügend
+ hohe Impfrate kann die Bevölkerung vor einer Epidemie schützen. Begründen Sie
+ dies mit der Formel für $R_0$.
+ \item Nehmen Sie den Einfluss von Impfung in das Modell auf. Gehen Sie dabei
+ davon aus, dass die Impfung vor Ausbruch der Krankheit durchgeführt wird, also
+ der Anfangswert entsprechend angepasst wird. Führen Sie numerische Simulationen
+ durch, die zeigen, dass ab einem bestimmten geimpften Anteil $vN$ der
+ Gesamtbevölkerung mit Impfrate $v$ keine Epidemie mehr eintritt.
+ Wie hängt $R_0$ von der Impfrate ab?
+ \item Bei welchem Wert von $S$ nimmt $I$ sein Maximum an? Berechnen Sie diesen
+ Wert analytisch und plotten Sie ihn in Ihr Phasendiagramm.
+ Es kann günstig sein, die zwei-di\-men\-sio\-na\-le gewöhnliche
+ Differentialgleichung in eine ein-di\-men\-sio\-na\-le zu transformieren:
+ \begin{equation*}
+  \frac{{\rm d} I}{{\rm d} S} = \frac{\dot{I}}{\dot{S}}=\dots
+ \end{equation*}
+ Welche Information geht bei der Transformation verloren?
+ \item Nehmen wir an, dass die Immunität der erholten Personen nicht dauerhaft
+ anhält, so dass sie sich wieder anstecken können. Ist es möglich, dass sich
+ eine dauerhafte Epidemie in der Bevölkerung hält?
+\end{enumerate}
+
+
+
+
+\end{aufg}
+
+
+\bigskip
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

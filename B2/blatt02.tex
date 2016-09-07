@@ -1,0 +1,84 @@
+% Uebungsaufgaben zur Vorlesung MoSi 3
+% Blatt 1
+
+\NeedsTeXFormat{LaTeX2e}
+\documentclass[11pt,a4paper]{article}
+\input{../ue-blatt_header.tex}
+
+\setcounter{blatt}{2}
+
+\begin{document}
+\input{../opening.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{aufg}[Verdünnung einer Lösung]
+ Ein Zylinder enthalte 2\,kg Wasser, und es seien 50\,g Saccharose darin
+ gelöst. Durch eine Röhre fließt 10\,g Wasser pro Minute in den Zylinder,
+ während durch eine andere Röhre 10\,g Wasser pro Minute -- einschließlich eines
+ bestimmten Saccharoseanteils -- abfließt. Wie vermindert sich die Masse der
+ Saccharose als Funktion der Zeit?
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[Analytische Lösung von gew.\ Differentialgleichungen]
+ Berechnen Sie die analytische Lösung $c(t)$, $v_1(t)$ und $v_2(t)$ der
+ folgenden Differentialgleichungen
+ für beliebigen Anfangswert.
+  \begin{enumerate}[(i)]
+  \item $\dot{c}=c^2$
+  \item $\dot{v}_1=\frac{v_1}{t}$
+  \item $\dot{v}_2=-\frac{v_2}{t}$
+ \end{enumerate}
+\end{aufg}
+
+%------------------------------------------------------------------------------%
+\bigskip%\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[Graphische Analyse]
+ Analysieren Sie die folgenden Differentialgleichungen graphisch: Finden Sie
+ alle Fixpunkte, klassifizieren Sie deren Stabilität und skizzieren Sie den
+ Graph der Lösungen für verschiedene Anfangswerte.
+ \begin{enumerate}[(i)]
+  \item $\dot{x}=4x^2 - 16$
+  \item $\dot{y}=y - y^2$
+  \item $\dot{z}=1 + \frac{1}{2}\cos(z)$
+ \end{enumerate}
+\end{aufg}
+
+
+%------------------------------------------------------------------------------%
+\bigskip%\begin{flushright}b.w.\end{flushright}\pagebreak
+%------------------------------------------------------------------------------%
+
+\begin{aufg}[Tumor-Wachstum]
+ Das Wachtum eines Tumors kann mit dem Gompertz-Gesetz
+ \begin{equation*}
+  \dot{N} = - a N \ln(bN)
+ \end{equation*}
+ besser modelliert werden als mit dem logistischen Wachstumsgesetz nach Verhulst
+  \begin{equation*}
+  \dot{N} = a(N_{\max}-N) N.
+ \end{equation*}
+ Dabei ist $N>0$ proportional zur Anzahl der Tumorzellen;
+ $a$, $b$ und $N_{\max}$ sind positive Parameter.
+ \begin{enumerate}
+  \item Skizzieren und vergleichen Sie die Graphen von $N$ für beide Wachstumsgesetze.
+  \item Interpretieren Sie $a$, $b$ und $N_{\max}$ biologisch.
+  \item Klassifizieren Sie die Fixpunkte der beiden Modelle mit Hilfe der
+        linearen Stabilitätsanalyse.
+ \end{enumerate}
+\end{aufg}
+
+
+\bigskip
+\hrule
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
